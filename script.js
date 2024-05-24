@@ -13,9 +13,9 @@ function updateElementPosition(element, event) {
     movementX = event.movementX;
     movementY = event.movementY;
   }
-  
+
   const elementY = parseInt(element.style.top || 0) + movementY;
-  const elementX = parseInt(element.style.left|| 0) + movementX;
+  const elementX = parseInt(element.style.left || 0) + movementX;
 
   element.style.top = elementY + "px";
   element.style.left = elementX + "px";
@@ -23,7 +23,7 @@ function updateElementPosition(element, event) {
 
 function startDrag(element, event) {
   const updateFunction = (event) => updateElementPosition(element, event);
-  const stopFunction = () => stopDrag({update: updateFunction, stop: stopFunction});
+  const stopFunction = () => stopDrag({ update: updateFunction, stop: stopFunction });
   document.addEventListener("mousemove", updateFunction);
   document.addEventListener("touchmove", updateFunction);
   document.addEventListener("mouseup", stopFunction);
@@ -51,20 +51,36 @@ pictures.forEach(picture => {
   picture.addEventListener("touchstart", startFunction);
 });
 
+function abrirNuevaPaginaEnNuevaPestana(url) {
+  window.open(url, '_blank');
+}
 
-
-$('.hero-btn').click(function(){
-  if(!$('.hero-btn').parent().hasClass('active')){
+$('.hero-btn').click(function () {
+  if (!$('.hero-btn').parent().hasClass('active')) {
     $(this).parent().stop().addClass('active');
-    setTimeout(function(){  
-      $('.hero-btn').parent().removeClass('active'); 
-      mostrarTextoAmor(); 
+    setTimeout(function () {
+      $('.hero-btn').parent().removeClass('active');
+      //mostrarTextoAmor();
+      abrirNuevaPaginaEnNuevaPestana('galeria.html');
     }, 2500);
+  }
+  var audio = document.getElementById('miAudio');
+  if (audio.paused) {
+    audio.play();
+  } else {
+    // Si ya está reproduciendo, detén y reinicia la reproducción
+    audio.pause();
+    audio.currentTime = 0;
+    audio.play();
   }
 });
 
-function mostrarTextoAmor() {
-  // Cambia la ubicación de la página actual a 'galeria.html'
-  window.location.href = "galeria.html";
-}
+// Función para abrir la nueva página en una nueva pestaña
+
+
+// Llamar a la función para abrir la nueva página en una nueva pestaña
+//abrirNuevaPaginaEnNuevaPestana('galeria.html');
+
+
+
 

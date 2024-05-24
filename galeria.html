@@ -6,6 +6,12 @@
   <link rel="icon" type="image/x-icon" href="img/corzn.jpg" />
   <title>Galeria de Nuestros Recuerdos | ForMoon</title>
   <link rel="stylesheet" href="./style.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var audio = document.getElementById('miAudio');
+      audio.play(); // Reproducir la música al cargar la página
+    });
+  </script>
 
 </head>
 
@@ -58,10 +64,11 @@
       <div class="Picture-note"><span>Luna & Mellody - CineStar</span></div>
     </div>
   </div>
+  <audio id="miAudio" autoplay>
+    <source src="muchix/ysxz.mp3" type="audio/mp3">
+  </audio>
 
-  <div class='made-with-love'>
-
-  </div>
+  <!-- Incluir jQuery desde la CDN de Google -->
   <script src="./script.js"></script>
 
 </body>
