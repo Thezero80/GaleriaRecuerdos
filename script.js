@@ -73,9 +73,12 @@ $('.hero-btn').click(function () {
     audio.currentTime = 0;
     audio.play();
   }
+  
 });
 
-// Función para abrir la nueva página en una nueva pestaña
+
+
+// Función para abrir la nueva página en una nueva pestaña | 
 
 
 // Llamar a la función para abrir la nueva página en una nueva pestaña
