@@ -11,10 +11,34 @@
             max-width: 300px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(to right, #ff69b4, #ffe6cc, #8bc34a);
+            background-size: 300% 300%;
+            animation: fondo-login 10s ease-in-out infinite;
+
+        }
+
+        @keyframes fondo-login {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                background-image: linear-gradient(to bottom, #ff69b4, #ffe6cc, #8bc34a);
+            }
         }
 
         form {
@@ -54,7 +78,7 @@
         .imgL {
             width: 13vh;
             height: 13vh;
-            border-radius: 25px;
+            border-radius: 50px;
         }
 
         body {
@@ -94,7 +118,9 @@
         <form id="login-form">
             <center><img class="imgL" src="img/login.jpg" alt=""></center>
             <hr>
-            <center><div>ECOSISTEMAS</div></center>
+            <center>
+                <div>ECOSISTEMAS</div>
+            </center>
             <br>
             <br>
             <input type="text" id="dni" placeholder="Ingresa tu DNI" name="dni" required autofocus="no">
